@@ -51,7 +51,7 @@ client.connect(err => {
 app.delete('/delate/:id', (req, res) =>{
   collection.deleteOne({_id: ObjectId(req.params.id)})
   .then(result =>{
-    console.log(result)
+    res.send(result.deletedCount > 0)
   })
 })
 
@@ -64,7 +64,7 @@ app.patch('/update/:id',(req, res) =>{
     }
   )
   .then(result => {
-    console.log(result)
+     res.send(result.modifiedCount > 0)
   })
 })
 
